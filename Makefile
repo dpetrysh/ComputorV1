@@ -1,15 +1,15 @@
 NAME = computor
-SRC := $(wildcard src/*.cpp)
-SRO := $(notdir $(patsubst %.cpp, %.o, $(SRC)))
+SRC := $(wildcard src/*.c)
+SRO := $(notdir $(patsubst %.c, %.o, $(SRC)))
 VPATH := src includes
 
 all: $(NAME)
 
 $(NAME): $(SRO)
-	g++ $^ -o $(NAME)
+	gcc $^ -o $(NAME)
 
-%.o : %.cpp
-	g++ -c -I ./includes/ $< -Wall -Wextra -Werror 
+%.o : %.c
+	gcc -c -I ./includes/ $< -Wall -Wextra -Werror 
 
 clean:
 	/bin/rm -f $(SRO)
